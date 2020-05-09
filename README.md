@@ -2,5 +2,5 @@
 Simple RSS Feed Organizer using AngularJS (v9)
 
 
-Template Design:
-https://github.com/puikinsh/Adminator-admin-dashboard
+## Tutorial:
+https://www.freecodecamp.org/news/angular-8-tutorial-in-easy-steps/
