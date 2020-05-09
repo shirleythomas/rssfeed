@@ -1,0 +1,55 @@
+<div style="padding: 13px;">
+    <mat-spinner *ngIf="layout.length === 0"></mat-spinner>
+
+    <div class="button-panel">
+        <button mat-button (click)="save()"> <mat-icon mat-list-icon>add</mat-icon> Add</button>
+        <button mat-button (click)="save()"> <mat-icon mat-list-icon>save</mat-icon> Save</button>
+    </div>
+    <mat-grid-list cols = "4" rowHeight = "100px">
+        <mat-grid-tile *ngFor="let card of layout"
+                [colspan] = "card.colspan"
+                [rowspan] = "card.rowspan">
+
+            <!--mat-grid-tile-header>test</mat-grid-tile-header-->
+            <mat-card>
+                <mat-card-actions>
+                    <button mat-button (click)="toggle(card)">
+                        <mat-icon mat-list-icon>settings</mat-icon>
+                    </button>
+                </mat-card-actions>
+
+                <div [hidden]="card.hidden">
+                    <app-feed-content [url]="card.url"></app-feed-content>
+                </div>
+                <div class="settings" [hidden]="!card.hidden">
+                    <mat-form-field hintLabel="RSS Feed Url">
+                        <mat-label>Url</mat-label>
+                        <input matInput #input maxlength="10" placeholder="Url" required [(ngModel)]="card.url" name="url">
+                        <mat-hint align="end">With http://</mat-hint>
+                    </mat-form-field>
+                    <mat-form-field>
+                    <mat-label>Type</mat-label>
+                    <mat-select>
+                        <mat-option value="news">News</mat-option>
+                        <mat-option value="podcast">Podcast</mat-option>
+                        <mat-option value="weather">Weather</mat-option>
+                    </mat-select>
+                    </mat-form-field>
+                    <mat-form-field>
+                        <mat-label>Width</mat-label>
+                        <mat-select [(ngModel)]="card.rowspan" name="rowspan">
+                        <mat-option value="1">Small</mat-option>
+                        <mat-option value="2">Medium</mat-option>
+                        <mat-option value="4">Large</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                    <mat-form-field hintLabel="Max 10 characters">
+                        <mat-label>Height</mat-label>
+                        <input matInput #input maxlength="10" placeholder="Height" [(ngModel)]="card.height" name="height">
+                    </mat-form-field>
+                </div>
+            </mat-card>
+        </mat-grid-tile>
+    </mat-grid-list>
+</div>
+
