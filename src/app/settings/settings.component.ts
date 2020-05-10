@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, SimpleChanges } from '@angular/core';
 
 @Component({
   selector: 'app-settings',
@@ -7,6 +7,8 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class SettingsComponent implements OnInit {
 
+  types = ["weather","podcast","news","others"];
+
   @Input() card: object;
 
   constructor() { }
@@ -14,8 +16,13 @@ export class SettingsComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  load_feed(e:any){
-    console.log(e.target.value);
+  load_feed(e) {
+      var changedUrl = e.target.value.toLowerCase();
+      this.types.forEach((value)=>{
+        if(changedUrl.includes(value)){
+          this.card.type = value;
+          return;
+        }
+      })
   }
-
 }

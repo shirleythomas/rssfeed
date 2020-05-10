@@ -19,7 +19,6 @@ import {MatInputModule} from '@angular/material/input';
 import {MatSelectModule} from '@angular/material/select';
 import { FeedContentComponent } from './feed-content/feed-content.component';
 import {MatListModule} from '@angular/material/list';
-import {MatGridListModule} from '@angular/material/grid-list';
 import {MatDividerModule} from '@angular/material/divider';
 import { SettingsComponent } from './settings/settings.component';
 import {DragDropModule} from '@angular/cdk/drag-drop';
@@ -49,7 +48,6 @@ import { WeatherComponent } from './weather/weather.component';
     MatInputModule,
     MatSelectModule,
     MatListModule,
-    MatGridListModule,
     MatDividerModule,
     DragDropModule
   ],

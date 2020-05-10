@@ -8,7 +8,7 @@
             {{title}}
     </mat-card-title>
 </mat-card-header>
-<mat-card-content [style.overflow]="'auto'" [style.height.px]="'350'">
+<mat-card-content [style.overflow]="'auto'" [style.height.px]="height">
     <mat-list-item *ngFor="let item of items; last as last">
         <a (click)="openWindow(item.link)">
             <h4 mat-line>{{ item.title }} </h4>

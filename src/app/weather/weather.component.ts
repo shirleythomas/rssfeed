@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, SimpleChanges } from '@angular/core';
 import { ApiService } from '../api.service';
 
 @Component({
@@ -9,12 +9,33 @@ import { ApiService } from '../api.service';
 export class WeatherComponent implements OnInit {
 
   @Input() url: string;
+  @Input() height: string;
   title = "";
   imgsrc = "";
   items = [];
+  day = "";
+  weather = "";
+  details = [];
   constructor(private apiService: ApiService) { }
 
   ngOnInit(): void {
+    this.loadFeed();
+  }
+
+  ngOnChanges(changes: SimpleChanges) {
+    let changeUrl = changes['url'];
+    if(!changeUrl.firstChange){
+      this.loadFeed();
+    }
+  }
+
+  display(item: any){
+    this.day = item.day;
+    this.weather = item.weather;
+    this.details = item.details;
+  }
+
+  loadFeed(){
     this.apiService.getFeedContent(this.url).subscribe((data: any[])=>{ 
       this.title = data["feed"].title;
       this.imgsrc = data["feed"].image;
@@ -31,8 +52,7 @@ export class WeatherComponent implements OnInit {
         formatted_item["details"] = item.description.split(",");
         this.items.push(formatted_item);
       });
-      console.log(data["feed"]);
-      console.log(this.items);
+      // console.log(JSON.stringify(data));
       // this.apiService.post("/data",data).subscribe((res: any[])=>{  
       //   console.log(res);
       // })  

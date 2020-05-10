@@ -10,20 +10,22 @@
         <button mat-button (click)="save()"> <mat-icon mat-list-icon>save</mat-icon> Save</button>
         <button mat-button (click)="cancel()"> <mat-icon mat-list-icon>cancel</mat-icon> Cancel</button>
     </div>
-    <div cdkDropList cdkDropListOrientation="horizontal" class="feed-list" (cdkDropListDropped)="drop($event)">
-        <div class="feed-box" *ngFor="let card of layout" cdkDrag [cdkDragDisabled]="isReadOnly" [ngStyle]="{'cursor': isReadOnly ? 'auto' : 'move'}">
-
-            <!--mat-grid-tile-header>test</mat-grid-tile-header-->
-            <mat-card>
+    <div cdkDropList class="feed-list" (cdkDropListDropped)="drop($event)">
+        <div class="feed-box" *ngFor="let card of layout"
+                cdkDrag [cdkDragDisabled]="isReadOnly"
+                [ngStyle]="{'cursor': isReadOnly ? 'auto' : 'move',
+                    'resize': isReadOnly ? 'none' : 'both'}">
+            
+            <mat-card [style.width.px]="card.width">
                 <div class="card-actions" [hidden]="isReadOnly">
                         <mat-icon mat-list-icon (click)="toggle(card)">settings</mat-icon>
                         <mat-icon mat-list-icon (click)="delete(card.id)">delete</mat-icon>
                 </div>
                 <div [hidden]="card.hidden">
-                    <app-weather *ngIf="(card.type==='weather'); else elseBlock" [url]="card.url"></app-weather>
-                    <ng-template #elseBlock><app-feed-content [url]="card.url"></app-feed-content></ng-template>
+                    <app-weather *ngIf="(card.type==='weather'); else elseBlock" [url]="card.url"  [height]="card.height"></app-weather>
+                    <ng-template #elseBlock><app-feed-content [url]="card.url"  [height]="card.height"></app-feed-content></ng-template>
                 </div>
-                <div class="settings" [hidden]="!card.hidden">
+                <div class="settings" [hidden]="!card.hidden" [style.height.px]="card.height">
                     <app-settings [card]="card"></app-settings>
                 </div>
             </mat-card>
