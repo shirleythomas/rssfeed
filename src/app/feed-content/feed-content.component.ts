@@ -1,4 +1,4 @@
-import { Component, OnInit , Input } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { ApiService } from '../api.service';
 
 @Component({
@@ -17,18 +17,18 @@ export class FeedContentComponent implements OnInit {
   constructor(private apiService: ApiService) { }
 
   ngOnInit(): void {
-    // this.apiService.getFeedContent(this.url).subscribe((data: any[])=>{ 
-    //   this.title = data["feed"].title;
-    //   this.imgsrc = data["feed"].image;
-    //   this.items = data["items"];
-    //   // console.log(data["feed"]);
-    //   // console.log(data["items"]);
-    //   // this.apiService.post("/data",data).subscribe((res: any[])=>{  
-    //   //   console.log(res);
-    //   // })  
-    // })
+    this.apiService.getFeedContent(this.url).subscribe((data: any[])=>{ 
+      this.title = data["feed"].title;
+      this.imgsrc = data["feed"].image;
+      this.items = data["items"].sort((val1, val2)=> {return new Date(val2.pubDate) - new Date(val1.pubDate)});;
+      console.log(data["feed"]);
+      console.log(data["items"]);
+      // this.apiService.post("/data",data).subscribe((res: any[])=>{  
+      //   console.log(res);
+      // })  
+    })
     
-    this.apiService.get("/data").subscribe((data: any[])=>{  
+    /*this.apiService.get("/data").subscribe((data: any[])=>{  
       // var elements = $filter('filter')(data["feed"],{url: this.url});
       const urlVal = this.url;
       var result = {};
@@ -39,9 +39,12 @@ export class FeedContentComponent implements OnInit {
       });
       this.title = result["feed"].title;
       this.imgsrc = result["feed"].image;
-      this.items = result["items"];
-      
-		})
+      this.items = result["items"].sort((val1, val2)=> {return new Date(val2.pubDate) - new Date(val1.pubDate)});
+		})*/
+  }
+
+  openWindow(url: string){
+    window.open(url, "_blank");
   }
 
 }

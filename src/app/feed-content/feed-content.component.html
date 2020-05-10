@@ -1,23 +1,25 @@
+<div *cdkDragPreview>
+    <img *ngIf="imgsrc.length > 0" [src]="imgsrc" [ngClass]="'feed-thumbnail'"/>
+    {{title}}
+</div>
 <mat-card-header [ngClass]="'feed-heading'">
-    <div *ngIf="imgsrc.length > 0">
-        <img [src]="imgsrc" [ngClass]="'feed-thumbnail'"/>
-    </div>
-    <div>
-        <mat-card-title>
+    <mat-card-title>
+            <img *ngIf="imgsrc.length > 0" [src]="imgsrc" [ngClass]="'feed-thumbnail'"/>
             {{title}}
-        </mat-card-title>
-    </div>
+    </mat-card-title>
 </mat-card-header>
-<mat-card-content [style.overflow]="'auto'" [style.height.px]="'500'">
+<mat-card-content [style.overflow]="'auto'" [style.height.px]="'350'">
     <mat-list-item *ngFor="let item of items; last as last">
+        <a (click)="openWindow(item.link)">
+            <h4 mat-line>{{ item.title }} </h4>
+            <span mat-line class="pub-date">{{ item.pubDate | date  : 'mediumDate' }}</span>
+            <p mat-line class="feed" [innerHTML]="item.description"></p>
+        </a>
         <audio controls *ngIf="item.enclosure.length > 0">
             <source [src]="item.enclosure.link" type="audio/ogg">
             <source [src]="item.enclosure.link" type="audio/mpeg">
           Your browser does not support the audio element.
         </audio>
-        <h4 mat-line><a [attr.href]="item.link">{{ item.title }}</a> </h4>
-        <span mat-line class="pub-date">{{ item.pubDate | date  : 'mediumDate' }}</span>
-        <p mat-line class="feed"> {{item.description}} </p>
         <mat-divider [inset]="true" *ngIf="!last"></mat-divider>
     </mat-list-item>
 </mat-card-content>

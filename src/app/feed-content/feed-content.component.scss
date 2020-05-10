@@ -1,19 +1,35 @@
 
-.feed{
-    font-size:0.8em !important;
+.feed {
     color:#756969;
 }
 
-.feed-heading{
+.feed-heading {
     align-items: center;
 }
 
-.feed-thumbnail{
+.feed-thumbnail {
     width: 60px;
-    height: 60px;
+    margin-right:10px;
+    box-shadow:0 4px 20px 0 rgba(0, 0, 0, 0.14), 0 7px 10px -5px rgba(0, 161, 255, 0.4);
 }
 
-.pub-date{
-    font-size:0.7em;
+.pub-date {
+    font-size:0.8em;
 }
 
+mat-card-header {
+    color:#03696f;
+}
+
+audio {
+    width:100%;
+}
+
+h4 {
+    margin-bottom:0;
+    color: #587a8e;
+}
+
+a {
+    cursor: pointer;
+}

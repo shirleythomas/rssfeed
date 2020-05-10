@@ -46,6 +46,14 @@ export class ApiService {
   public post(url, data){  
 		return this.httpClient.post(this.SERVER_URL+url, data, this.options);//.pipe(catchError(this.handleError));  
   }
+
+  public put(url, data){  
+		return this.httpClient.put(this.SERVER_URL+url, data, this.options);//.pipe(catchError(this.handleError));  
+  }
+
+  public delete(url){  
+		return this.httpClient.delete(this.SERVER_URL+url, this.options);//.pipe(catchError(this.handleError));  
+  }
   
   
 }

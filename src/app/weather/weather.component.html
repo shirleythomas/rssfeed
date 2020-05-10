@@ -1,0 +1,14 @@
+<mat-card-header [ngClass]="'feed-heading'">
+    <mat-card-title>
+            <img *ngIf="imgsrc.length > 0" [src]="imgsrc" [ngClass]="'feed-thumbnail'"/>
+            {{title}}
+    </mat-card-title>
+</mat-card-header>
+<mat-card-content [style.overflow]="'auto'" [style.height.px]="'350'">
+    <mat-list-item *ngFor="let item of items; last as last">
+            <h4 mat-line>{{ item.day }} </h4>
+            <span mat-line class="pub-date">{{ item.weather }}</span>
+            <p mat-line class="feed" *ngFor="let row of item.details;" [innerHTML]="row"></p>
+        <mat-divider [inset]="true" *ngIf="!last"></mat-divider>
+    </mat-list-item>
+</mat-card-content>

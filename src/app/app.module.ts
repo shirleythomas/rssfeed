@@ -21,13 +21,18 @@ import { FeedContentComponent } from './feed-content/feed-content.component';
 import {MatListModule} from '@angular/material/list';
 import {MatGridListModule} from '@angular/material/grid-list';
 import {MatDividerModule} from '@angular/material/divider';
+import { SettingsComponent } from './settings/settings.component';
+import {DragDropModule} from '@angular/cdk/drag-drop';
+import { WeatherComponent } from './weather/weather.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     AboutComponent,
-    FeedContentComponent
+    FeedContentComponent,
+    SettingsComponent,
+    WeatherComponent
   ],
   imports: [
     BrowserModule,
@@ -45,7 +50,8 @@ import {MatDividerModule} from '@angular/material/divider';
     MatSelectModule,
     MatListModule,
     MatGridListModule,
-    MatDividerModule
+    MatDividerModule,
+    DragDropModule
   ],
   providers: [],
   bootstrap: [AppComponent]

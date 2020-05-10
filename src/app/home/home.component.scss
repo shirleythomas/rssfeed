@@ -3,13 +3,82 @@
 }
 
 mat-card{
-    margin-left: 8px;
+    border: 0;
+    margin-bottom: 30px;
+    margin-top: 30px;
+    border-radius: 6px;
+    color: #333;
+    background: #fff;
+    width: 100%;
+    box-shadow: 0 2px 2px 0 rgba(0,0,0,.14), 0 3px 1px -2px rgba(0,0,0,.2), 0 1px 5px 0 rgba(0,0,0,.12);
+    box-shadow: 0 1px 4px 0 rgba(0,0,0,.14);
+    margin:10px;
 }
 
 .button-panel{
+    align-items: end;
+}
+
+mat-card-actions {
     float:right;
 }
 
-.mat-card-actions {
+::ng-deep .mat-grid-tile .mat-figure{
+    align-items: start !important;
+}
+
+::ng-deep .mat-card-header-text{
+    margin:0 !important;
+}
+
+.card-actions mat-icon{
+    font-size: 1.4em;
+    cursor: pointer;
+    padding: 0 5px;
     float:right;
+}
+
+/*.mat-grid-tile {
+    border: solid 2px #000;
+}*/
+
+.feed-list {
+    max-width: 100%;
+    min-height: 60px;
+    display: flex;
+    flex-flow: row wrap;
+    overflow: hidden;
+}
+
+.feed-box {
+    color: rgba(0, 0, 0, 0.87);
+    display: flex;
+    flex-direction: row;
+    align-items: start;
+    justify-content: space-between;
+    box-sizing: border-box;
+    cursor: move;
+    font-size: 14px;
+    flex-grow: 1;
+    flex-basis: 0;
+}
+
+.cdk-drag-preview {
+    box-sizing: border-box;
+    border-radius: 4px;
+    box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.2),
+            0 8px 10px 1px rgba(0, 0, 0, 0.14),
+            0 3px 14px 2px rgba(0, 0, 0, 0.12);
+}
+
+.cdk-drag-placeholder {
+    opacity: 0;
+}
+
+.cdk-drag-animating {
+    transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+.feed-list.cdk-drop-list-dragging .feed-box:not(.cdk-drag-placeholder) {
+    transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
 }
