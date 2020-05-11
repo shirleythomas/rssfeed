@@ -1,14 +1,18 @@
 <div style="padding: 13px;">
-    <mat-spinner *ngIf="layout.length === 0"></mat-spinner>
-
-    <div class="button-panel" [hidden]="!isReadOnly">
-        <button mat-button (click)="refresh()"> <mat-icon mat-list-icon>refresh</mat-icon> Refresh</button>
-        <button mat-button (click)="toggle_edit()"> <mat-icon mat-list-icon>edit</mat-icon> Edit</button>
+    <div class="button-panel">
+        <div [hidden]="!isReadOnly">
+            <button mat-button (click)="refresh()"> <mat-icon mat-list-icon>refresh</mat-icon> Refresh</button>
+            <button mat-button (click)="toggle_edit()"> <mat-icon mat-list-icon>edit</mat-icon> Edit</button>
+        </div>
+        <div [hidden]="isReadOnly">
+            <button mat-button (click)="add()"> <mat-icon mat-list-icon>add</mat-icon> Add</button>
+            <button mat-button (click)="save()"> <mat-icon mat-list-icon>save</mat-icon> Save</button>
+            <button mat-button (click)="cancel()"> <mat-icon mat-list-icon>cancel</mat-icon> Cancel</button>
+        </div>
     </div>
-    <div class="button-panel" [hidden]="isReadOnly">
-        <button mat-button (click)="add()"> <mat-icon mat-list-icon>add</mat-icon> Add</button>
-        <button mat-button (click)="save()"> <mat-icon mat-list-icon>save</mat-icon> Save</button>
-        <button mat-button (click)="cancel()"> <mat-icon mat-list-icon>cancel</mat-icon> Cancel</button>
+    <mat-spinner *ngIf="loading"></mat-spinner>
+    <div class= "guidance" *ngIf="layout.length === 0">
+        <h2>Add RSS Feed to Dashboard by clicking on Edit and then Add.</h2>
     </div>
     <div cdkDropList class="feed-list" (cdkDropListDropped)="drop($event)">
         <div class="feed-box" *ngFor="let card of layout"

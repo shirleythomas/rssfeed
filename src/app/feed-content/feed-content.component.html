@@ -9,13 +9,18 @@
     </mat-card-title>
 </mat-card-header>
 <mat-card-content [style.overflow]="'auto'" [style.height.px]="height">
+    <video controls *ngIf="type==='video/mp4'">
+        <source [src]="link" type="video/mp4">
+        <source [src]="link" type="video/ogg">
+        Your browser does not support the video tag.
+    </video>
     <mat-list-item *ngFor="let item of items; last as last">
-        <a (click)="openWindow(item.link)">
+        <a (click)="view(item.link)">
             <h4 mat-line>{{ item.title }} </h4>
             <span mat-line class="pub-date">{{ item.pubDate | date  : 'mediumDate' }}</span>
             <p mat-line class="feed" [innerHTML]="item.description"></p>
         </a>
-        <audio controls *ngIf="item.enclosure.length > 0">
+        <audio controls *ngIf="item.enclosure.type === 'audio/mpeg'">
             <source [src]="item.enclosure.link" type="audio/ogg">
             <source [src]="item.enclosure.link" type="audio/mpeg">
           Your browser does not support the audio element.

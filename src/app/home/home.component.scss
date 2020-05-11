@@ -18,7 +18,10 @@ mat-card{
 }
 
 .button-panel{
-    align-items: end;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+  align-content: flex-end;
 }
 
 mat-card-actions {
@@ -39,10 +42,6 @@ mat-card-actions {
     padding: 0 5px;
     float:right;
 }
-
-/*.mat-grid-tile {
-    border: solid 2px #000;
-}*/
 
 .feed-list {
     max-width: 100%;
@@ -83,4 +82,17 @@ mat-card-actions {
 
 .feed-list.cdk-drop-list-dragging .feed-box:not(.cdk-drag-placeholder) {
     transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+.guidance {
+    color:#afafaf;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    height: 500px;
+}
+
+::ng-deep .mat-progress-spinner circle, .mat-spinner circle {
+    stroke: #848282;
 }

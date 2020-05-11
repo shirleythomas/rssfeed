@@ -14,6 +14,7 @@ export class HomeComponent implements OnInit {
   maxId = 0;
   isReadOnly = true;
   deletedIds = [];
+  loading = true;
   
   constructor(private apiService: ApiService, private router: Router) { }
   
@@ -21,6 +22,7 @@ export class HomeComponent implements OnInit {
 		this.apiService.get("/layout").subscribe((data: any[])=>{  
       this.layout = data.sort((val1, val2)=> {return val1.order-val2.order});
       this.maxId = Math.max.apply(Math, data.map(function(o) { return o.id; }));
+      this.loading = false;
     })
   }
   
@@ -88,9 +90,15 @@ export class HomeComponent implements OnInit {
 
   cancel(){
     this.toggle_edit();
-    this.layout.forEach(card => {
-      card.hidden=false;
-    });
+      this.layout.forEach(card => {
+        card.hidden=false;
+      });
+    // if(confirm("There are unsaved changes.Are you sure you want to cancel?")) {
+    //   this.toggle_edit();
+    //   this.layout.forEach(card => {
+    //     card.hidden=false;
+    //   });
+    // }
   }
 
   drop(event: CdkDragDrop<string[]>) {
