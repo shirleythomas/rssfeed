@@ -4,6 +4,7 @@ JSON server is used for mock REST API calls.
 
 ## UI
 ![Dashboard](https://github.com/shirleythomas/rssfeed/blob/master/screenshots/readonly.png)
+![Settings](https://github.com/shirleythomas/rssfeed/blob/master/screenshots/editable.png)
 
 Basic idea of building an Angular application was obtained from the below tutorial:
 https://www.freecodecamp.org/news/angular-8-tutorial-in-easy-steps/
