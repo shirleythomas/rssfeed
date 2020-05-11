@@ -2,7 +2,8 @@
 Simple RSS Feed Organizer using AngularJS (v9) & Material Design.
 JSON server is used for mock REST API calls.
 
-##UI
+## UI
+![Login page](https://github.com/shirleythomas/rssfeed/blob/master/screenshot/readonly.jpg)
 
 Basic idea of building an Angular application was obtained from the below tutorial:
 https://www.freecodecamp.org/news/angular-8-tutorial-in-easy-steps/
