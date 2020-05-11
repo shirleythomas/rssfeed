@@ -2,6 +2,8 @@
 Simple RSS Feed Organizer using AngularJS (v9) & Material Design.
 JSON server is used for mock REST API calls.
 
+The applications supports Audio & Video Podcast, Blog & Weather RSS Feeds.
+
 ## UI
 ![Dashboard](https://github.com/shirleythomas/rssfeed/blob/master/screenshots/readonly.png)
 
