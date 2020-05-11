@@ -32,6 +32,7 @@ export class HomeComponent implements OnInit {
     var order = 0;
     this.layout.forEach((card)=>{
       card.order = order++;
+      card.hidden = false;
       if(card.newid){
         card.id = card.newid;
         delete card.newid;

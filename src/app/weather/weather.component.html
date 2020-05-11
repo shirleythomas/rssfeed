@@ -6,7 +6,7 @@
 </mat-card-header>
 <mat-card-content [style.overflow]="'auto'"  [style.height.px]="height">
     <div>
-        <mat-icon fontSet="fa" fontIcon="fa-cloud-sun"></mat-icon>
+        <mat-icon class="weather" fontSet="fa" [fontIcon]="icon"></mat-icon>
         <h4 mat-line>{{ weather }} </h4>
         <span mat-line class="pub-date">{{ day }}</span>
         <p mat-line class="feed" *ngFor="let row of details;" [innerHTML]="row"></p>
@@ -15,6 +15,7 @@
     <mat-list-item *ngFor="let item of items; last as last" (click) = display(item)>
         <h4 mat-line>{{ item.day }} </h4>
         <span mat-line class="pub-date">{{ item.weather }}</span>
+        <mat-icon class="weather" fontSet="fa" [fontIcon]="item.icon"></mat-icon>
         <p mat-line class="feed" *ngFor="let row of item.info;" [innerHTML]="row"></p>
         <mat-divider [inset]="true" *ngIf="!last"></mat-divider>
     </mat-list-item>

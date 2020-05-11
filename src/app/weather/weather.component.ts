@@ -15,7 +15,14 @@ export class WeatherComponent implements OnInit {
   items = [];
   day = "";
   weather = "";
+  icon = "";
   details = [];
+
+  weather_icons = ["bolt", "cloud", "cloud-moon-rain",
+      "cloud-rain", "cloud-showers-heavy", "cloud-sun",
+      "cloud-sun-rain", "moon", "rainbow", "smog",
+      "snowflake", "sun", "wind"];
+
   constructor(private apiService: ApiService) { }
 
   ngOnInit(): void {
@@ -33,6 +40,31 @@ export class WeatherComponent implements OnInit {
     this.day = item.day;
     this.weather = item.weather;
     this.details = item.details;
+    this.icon = item.icon;
+  }
+
+  // Naive algorithm to find the best icon for the weather.
+  findIcon(weather: string){
+    weather = weather.toLowerCase();
+    var max_probability = 0;
+    var bestIcon = "";
+    this.weather_icons.forEach((icon)=>{
+      var values = icon.split("-");
+      // console.log(values);
+      var match = 0;
+      values.forEach((value)=>{
+        if(weather.includes(value)){
+          match++;
+        }
+      })
+      var probability = match/values.length;
+
+      if(probability > max_probability){
+        max_probability = probability;
+        bestIcon = icon;
+      }
+    });
+    return "fa-"+bestIcon;
   }
 
   loadFeed(){
@@ -45,6 +77,7 @@ export class WeatherComponent implements OnInit {
         var summary = title[0].split(":");
         formatted_item["day"] = summary[0];
         formatted_item["weather"] = summary[1];
+        formatted_item["icon"] = this.findIcon(summary[1]);
         formatted_item["info"] = [];
         for(var i=1; i < title.length; i++){
           formatted_item["info"].push(title[i]);
