@@ -1,5 +1,6 @@
 # rssfeed
-Simple RSS Feed Organizer using AngularJS (v9)
+Simple RSS Feed Organizer using AngularJS (v9) & Material Design.
+JSON server is used for mock REST API calls.
 
 
 ## Tutorial:
